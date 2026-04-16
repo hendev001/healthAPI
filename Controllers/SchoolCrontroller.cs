@@ -38,14 +38,33 @@ namespace healthAPI.Controllers
         //}
 
 
-        [HttpPost("AddStudent")]
-        public IActionResult Post([FromBody] StudentDto student)
+        //[HttpPost("AddStudent")]
+        //public IActionResult Post([FromBody] StudentDto student)
+        //{
+        //     var result = studentRepository.AddStudent(student);
+        //    if (result == null)
+        //        {
+        //        return BadRequest("Failed to add student.");
+        //    }       
+        //    return Ok(result);
+        //}
+
+
+        [HttpPost("AddStudents")]
+        public IActionResult Post([FromBody] List<StudentDto> students)
         {
-             var result = studentRepository.AddStudent(student);
+            if (students == null || !students.Any())
+            {
+                return BadRequest("Student list is empty.");
+            }
+
+            var result = studentRepository.AddStudents(students);
+
             if (result == null)
-                {
-                return BadRequest("Failed to add student.");
-            }       
+            {
+                return BadRequest("Failed to add students.");
+            }
+
             return Ok(result);
         }
     }

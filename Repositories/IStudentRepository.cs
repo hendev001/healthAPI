@@ -12,8 +12,9 @@ namespace healthAPI.Repositories
 
         Student GetStudentByName(string name);
 
-        string AddStudent(StudentDto student);
+        // string AddStudent(StudentDto student);
 
+        List<Student> AddStudents(List<StudentDto> students);
         void UpdateStudent(Student student);
 
         void DeleteStudent(int id);

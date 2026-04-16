@@ -15,18 +15,7 @@ namespace healthAPI.Repositories
 
         public string AddStudent(StudentDto student)
         {
-            _context.Students.Add(new Student
-            {
-                StudentName = student.StudentName,
-                DOB = student.DOB,
-                City = student.City,
-                State = student.State,
-                Email = student.Email,
-                SSN = student.SSN
-            });
-
-            _context.SaveChanges();
-            return "Student Added successfully";
+            throw new NotImplementedException();
         }
 
         public void DeleteStudent(int id)
@@ -53,6 +42,24 @@ namespace healthAPI.Repositories
         public void UpdateStudent(Student student)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Student> AddStudents(List<StudentDto> students)
+        {
+            var studentEntities = students.Select(s => new Student
+            {
+                StudentName = s.StudentName,
+                DOB = s.DOB,
+                City = s.City,
+                State = s.State,
+                Email = s.Email,
+                SSN = s.SSN
+            }).ToList();
+
+            _context.Students.AddRange(studentEntities);
+            _context.SaveChanges();
+
+            return studentEntities;
         }
     }
 }
