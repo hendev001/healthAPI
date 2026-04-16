@@ -1,4 +1,5 @@
-﻿using healthAPI.Models;
+﻿using healthAPI.DTOs;
+using healthAPI.Models;
 
 namespace healthAPI.Repositories
 {
@@ -6,5 +7,15 @@ namespace healthAPI.Repositories
     {
 
         List<Student> GetAllStudents();
+
+        Student? GetStudentById(int id);
+
+        Student GetStudentByName(string name);
+
+        string AddStudent(StudentDto student);
+
+        void UpdateStudent(Student student);
+
+        void DeleteStudent(int id);
     }
 }
